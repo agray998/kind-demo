@@ -1,4 +1,4 @@
-# A demonstration of a local k8s cluster using *k*ubernetes *in* *d*ocker
+# A demonstration of a local k8s cluster using (*k*)ubernetes (*in*) (*d*)ocker
 
 ## Pre-reqs
 To use kind, we need go and docker installed...
