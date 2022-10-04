@@ -6,14 +6,12 @@ To use kind, we need go and docker installed...
 ## Configuring cluster
 To get started, we need a kind cluster to use for the demonstration. Kind is a go application, and can be installed on any machine with go installed via:  
 ```shell
-GO111MODULE="on" go get sigs.k8s.io/kind@v0.16.0 
+GO111MODULE="on" go get sigs.k8s.io/kind@v0.16.0 # (go < 1.17) 
 ```
-(go < 1.17)  
 or  
 ```shell
-go install sigs.k8s.io/kind@v0.16.0 
+go install sigs.k8s.io/kind@v0.16.0 # (go >= 1.17) 
 ```
-(go >= 1.17)  
 Next, we define the configuration for the cluster, using the following *kind-config.yml*:  
 ```yaml
 kind: Cluster
