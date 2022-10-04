@@ -1,3 +1,4 @@
+
 # A demonstration of a local k8s cluster using (*k*)ubernetes (*in*) (*d*)ocker
 
 ## Pre-reqs
@@ -29,4 +30,8 @@ This defines a cluster with one control and two worker nodes, with one worker no
 To create this cluster, simply run:  
 ```shell
 kind create cluster --config=kind-config.yml
+```
+Once the cluster is created, it can be managed through kubectl. If kubectl is not already installed, install it following the appropriate installation steps for your system. On Ubuntu kubectl may be installed as a snap, via:
+```shell
+sudo snap install kubectl --classic
 ```
