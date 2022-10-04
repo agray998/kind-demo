@@ -13,7 +13,7 @@ sudo usermod -aG docker ${USER}
 sudo reboot
 ```
 
-## Configuring cluster
+## Configuring Cluster
 To get started, we need a kind cluster to use for the demonstration. Kind is a go application, and can be installed on any machine with go installed via:  
 ```shell
 GO111MODULE="on" go get sigs.k8s.io/kind@v0.16.0 # (go < 1.17) 
@@ -49,14 +49,12 @@ Once the cluster is created, it can be managed through kubectl. If kubectl is no
 sudo snap install kubectl --classic
 ```
 
-## Deploying example:
-To demonstrate the cluster in action, deploy the provided example, for now a simple nginx pod. First, create the configMap which defines the nginx configuration:
+## Deploying Example
+NOTE: Hosting the kind cluster takes up a fair amount of disk space, if you find your machine does not have sufficient space to pull the images for the example, you can mount an additional data disk, and configure docker to store images there.
+To demonstrate the cluster in action we can deploy the provided example, for now a simple one pod per service deployment of [this application](https://github.com/agray998/QA-DevOps-Practical-Project):
 ```shell
-kubectl apply -f nginx-config.yml
+cd prac-proj
+declare -a services=(db name unit effect frontend)
+for service in ${services[@]}; do kubectl apply -f ${service}.yaml; done
 ```
-Next, deploy the nginx pod with associated service (for now a nodePort service):
-```shell
-kubectl apply -f nginx.yml
-```
-
-Visiting the VM's external IP will display the message `Hello from nginx-demo!`.
+The application should now be available at port 80 on the virtual machine hosting the cluster.
