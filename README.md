@@ -39,7 +39,7 @@ nodes:
     hostPort: 80
 - role: worker
 ```
-This defines a cluster with one control and two worker nodes, with one worker node having its' port 80 forwarded to port 80 on the VM, allowing external access to the cluster to test the running application(s).
+This defines a cluster with one control and two worker nodes, with one worker node having its' port 32080 forwarded to port 80 on the VM, allowing external access to the cluster to test the running application(s).
 To create this cluster, simply run:  
 ```shell
 kind create cluster --config=kind-config.yml
