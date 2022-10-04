@@ -2,7 +2,16 @@
 # A demonstration of a local k8s cluster using (*k*)ubernetes (*in*) (*d*)ocker
 
 ## Pre-reqs
-To use kind, we need go and docker installed...
+To use kind, we need go and docker installed. Go may be readily installed via apt:
+```shell
+sudo apt update && sudo apt install -y golang # the apt package will usually have an older version of go than the most current version; this is not an issue for our purposes
+```
+To install docker, and add yourself to the docker group:
+```shell
+curl https://get.docker.com | sudo bash
+sudo usermod -aG docker ${USER}
+sudo reboot
+```
 
 ## Configuring cluster
 To get started, we need a kind cluster to use for the demonstration. Kind is a go application, and can be installed on any machine with go installed via:  
