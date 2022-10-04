@@ -22,6 +22,10 @@ or
 ```shell
 go install sigs.k8s.io/kind@v0.16.0 # (go >= 1.17) 
 ```
+Once kind is installed, it will need to be added to PATH:
+```shell
+export PATH=$PATH:$(go env GOPATH)/bin
+```
 Next, we define the configuration for the cluster, using the following *kind-config.yml*:  
 ```yaml
 kind: Cluster
@@ -31,7 +35,7 @@ nodes:
 - role: control-plane
 - role: worker
   extraPortMappings:
-  - containerPort: 80
+  - containerPort: 32080
     hostPort: 80
 - role: worker
 ```
@@ -44,3 +48,15 @@ Once the cluster is created, it can be managed through kubectl. If kubectl is no
 ```shell
 sudo snap install kubectl --classic
 ```
+
+## Deploying example:
+To demonstrate the cluster in action, deploy the provided example, for now a simple nginx pod. First, create the configMap which defines the nginx configuration:
+```shell
+kubectl apply -f nginx-config.yml
+```
+Next, deploy the nginx pod with associated service (for now a nodePort service):
+```shell
+kubectl apply -f nginx.yml
+```
+
+Visiting the VM's external IP will display the message `Hello from nginx-demo!`.

@@ -1,0 +1,10 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: demo-kube-cluster
+nodes:
+- role: control-plane
+- role: worker
+  extraPortMappings:
+  - containerPort: 32080
+    hostPort: 80
+- role: worker
